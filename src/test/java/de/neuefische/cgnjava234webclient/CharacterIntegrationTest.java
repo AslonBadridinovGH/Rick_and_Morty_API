@@ -89,7 +89,7 @@ class CharacterIntegrationTest {
                                     "episode": [
                                         "https://rickandmortyapi.com/api/episode/1",
                                         "https://rickandmortyapi.com/api/episode/2",
-                                        "https://rickandmortyapi.com/api/episode/3"          
+                                        "https://rickandmortyapi.com/api/episode/3"   
                                     ],
                                     "url": "https://rickandmortyapi.com/api/character/1",
                                     "created": "2017-11-04T18:48:46.250Z"
@@ -126,7 +126,10 @@ class CharacterIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                   "name": "Florian"
+                                   "name": "Florian",
+                                     "status": null,
+                              "origin": null,
+                                "episode": null
                                 }
                                 """))
 
@@ -134,7 +137,11 @@ class CharacterIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
-                            "name": "Florian"
+                           "name": "Florian",
+                            "status": null,
+                              "origin": null,
+                                "episode": null
+                           
                         }
                         """))
                 .andExpect(jsonPath("$.id").isNotEmpty())
