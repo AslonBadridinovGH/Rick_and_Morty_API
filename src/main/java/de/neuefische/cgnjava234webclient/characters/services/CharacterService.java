@@ -2,13 +2,12 @@ package de.neuefische.cgnjava234webclient.characters.services;
 
 import de.neuefische.cgnjava234webclient.characters.models.Character;
 import de.neuefische.cgnjava234webclient.characters.repositorys.CharacterRepository;
-import de.neuefische.cgnjava234webclient.characters.services.api.RickAndMortyAPIService;
+import de.neuefische.cgnjava234webclient.characters.api.RickAndMortyAPIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava234webclient.characters.services.api;
+package de.neuefische.cgnjava234webclient.characters.api;
 
 import de.neuefische.cgnjava234webclient.characters.exception.CharacterNotFoundException;
 import de.neuefische.cgnjava234webclient.characters.models.Character;
