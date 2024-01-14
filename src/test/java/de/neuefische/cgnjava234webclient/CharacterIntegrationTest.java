@@ -56,6 +56,7 @@ class CharacterIntegrationTest {
     }
 
     @Test
+    @DirtiesContext
     public void getAllCharacters() throws Exception {
         //GIVEN
         characterRepository.save(new Character("123", "Test", "alive", new RickAndMortyOrigin("Earth", "url"), List.of("episode1")));
