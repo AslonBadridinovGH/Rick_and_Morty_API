@@ -116,41 +116,6 @@ class CharacterIntegrationTest {
         assertEquals(mvcResult.getResponse().getStatus(), 200);
     }
 
-/*    @Test
-    @DirtiesContext
-    public void postCharacter() throws Exception {
-        //GIVEN
-
-        //WHEN
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/api/characters")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                {
-                                   "name": "Florian",
-                                     "status": null,
-                              "origin": null,
-                                "episode": null
-                                }
-                                """))
-
-                //THEN
-                .andExpect(status().isOk())
-                .andExpect(content().json("""
-                        {
-                           "name": "Florian",
-                            "status": null,
-                              "origin": null,
-                                "episode": null
-                           
-                        }
-                        """))
-                .andExpect(jsonPath("$.id").isNotEmpty())
-                .andReturn();
-
-
-        assertEquals(mvcResult.getResponse().getStatus(), 200);
-    }*/
-
     @Test
     @DirtiesContext
     public void postCharacter() throws Exception {
