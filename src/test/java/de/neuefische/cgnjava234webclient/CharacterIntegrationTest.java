@@ -131,7 +131,7 @@ class CharacterIntegrationTest {
                                 """))
 
                 //THEN
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content().json("""
                         {
                             "name": "Florian"
@@ -141,6 +141,6 @@ class CharacterIntegrationTest {
                 .andReturn();
 
 
-        assertEquals(mvcResult.getResponse().getStatus(), 200);
+        assertEquals(mvcResult.getResponse().getStatus(), 201);
     }
 }
