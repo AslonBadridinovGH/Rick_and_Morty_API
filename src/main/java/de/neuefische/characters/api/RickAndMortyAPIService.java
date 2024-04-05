@@ -13,12 +13,15 @@ import java.util.List;
 @Service
 public class RickAndMortyAPIService {
 
+
     private final RestClient restClient;
 
     public RickAndMortyAPIService(@Value("${app.rickandmorty.api.url}") String url) {
         restClient = RestClient.builder()
                 .baseUrl(url)
                 .build();
+
+        System.out.println();
     }
 
     public List<Character> loadAllCharacters() {
