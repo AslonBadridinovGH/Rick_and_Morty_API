@@ -20,7 +20,6 @@ public class RickAndMortyAPIService {
         restClient = RestClient.builder()
                 .baseUrl(url)
                 .build();
-
     }
 
     public List<Character> loadAllCharacters() {
