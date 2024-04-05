@@ -22,6 +22,7 @@ public class RickAndMortyAPIService {
                 .build();
 
         System.out.println();
+
     }
 
     public List<Character> loadAllCharacters() {
