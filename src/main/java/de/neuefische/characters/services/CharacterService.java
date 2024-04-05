@@ -1,8 +1,8 @@
-package de.neuefische.cgnjava234webclient.characters.services;
+package de.neuefische.characters.services;
 
-import de.neuefische.cgnjava234webclient.characters.models.Character;
-import de.neuefische.cgnjava234webclient.characters.repositorys.CharacterRepository;
-import de.neuefische.cgnjava234webclient.characters.api.RickAndMortyAPIService;
+import de.neuefische.characters.repositorys.CharacterRepository;
+import de.neuefische.characters.models.Character;
+import de.neuefische.characters.api.RickAndMortyAPIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

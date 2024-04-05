@@ -1,8 +1,8 @@
-package de.neuefische.cgnjava234webclient.characters.controllers;
+package de.neuefische.characters.controllers;
 
-import de.neuefische.cgnjava234webclient.characters.exception.ErrorMessage;
-import de.neuefische.cgnjava234webclient.characters.models.Character;
-import de.neuefische.cgnjava234webclient.characters.services.CharacterService;
+import de.neuefische.characters.exception.ErrorMessage;
+import de.neuefische.characters.models.Character;
+import de.neuefische.characters.services.CharacterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

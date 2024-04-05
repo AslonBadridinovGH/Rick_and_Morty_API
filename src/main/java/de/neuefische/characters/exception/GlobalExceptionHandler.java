@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava234webclient.characters.exception;
+package de.neuefische.characters.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

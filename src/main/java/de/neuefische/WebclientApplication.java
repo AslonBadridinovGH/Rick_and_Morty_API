@@ -1,13 +1,13 @@
-package de.neuefische.cgnjava234webclient;
+package de.neuefische;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CgnJava234WebclientApplication {
+public class WebclientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CgnJava234WebclientApplication.class, args);
+        SpringApplication.run(WebclientApplication.class, args);
     }
 
 }

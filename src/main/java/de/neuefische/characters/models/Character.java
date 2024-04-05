@@ -1,6 +1,6 @@
-package de.neuefische.cgnjava234webclient.characters.models;
+package de.neuefische.characters.models;
 
-import de.neuefische.cgnjava234webclient.characters.models.api.RickAndMortyOrigin;
+import de.neuefische.characters.models.api.RickAndMortyOrigin;
 
 import java.util.List;
 

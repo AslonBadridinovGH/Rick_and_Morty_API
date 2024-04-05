@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava234webclient.characters.models.api;
+package de.neuefische.characters.models.api;
 
 public record RickAndMortyOrigin(
         String name,

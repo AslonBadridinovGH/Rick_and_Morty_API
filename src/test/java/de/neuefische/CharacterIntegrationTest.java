@@ -1,8 +1,8 @@
-package de.neuefische.cgnjava234webclient;
+package de.neuefische;
 
-import de.neuefische.cgnjava234webclient.characters.models.Character;
-import de.neuefische.cgnjava234webclient.characters.models.api.RickAndMortyOrigin;
-import de.neuefische.cgnjava234webclient.characters.repositorys.CharacterRepository;
+import de.neuefische.characters.models.Character;
+import de.neuefische.characters.models.api.RickAndMortyOrigin;
+import de.neuefische.characters.repositorys.CharacterRepository;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.AfterAll;
@@ -61,6 +61,7 @@ class CharacterIntegrationTest {
         //GIVEN
         characterRepository.save(new Character("123", "Test", "alive", new RickAndMortyOrigin("Earth", "url"), List.of("episode1")));
 
+
         mockWebServer.enqueue(new MockResponse()
                 .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                 .setBody("""
@@ -97,7 +98,6 @@ class CharacterIntegrationTest {
                             ]
                         }
                         """));
-
         //WHEN
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/characters"))
 
@@ -111,36 +111,29 @@ class CharacterIntegrationTest {
                         {"id":"1","name":"TEst","status":"Alive","origin":{"name":"Earth (C-137)","url":"https://rickandmortyapi.com/api/location/1"},"episode":["https://rickandmortyapi.com/api/episode/1","https://rickandmortyapi.com/api/episode/2","https://rickandmortyapi.com/api/episode/3"]}]
                         """))
                 .andReturn();
-
-
         assertEquals(mvcResult.getResponse().getStatus(), 200);
     }
-
     @Test
     @DirtiesContext
     public void postCharacter() throws Exception {
         //GIVEN
-
         //WHEN
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/api/characters")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                   "name": "Florian"
+                                   "name": "Aslon"
                                 }
                                 """))
-
                 //THEN
                 .andExpect(status().isCreated())
                 .andExpect(content().json("""
                         {
-                            "name": "Florian"
+                            "name": "Aslon"
                         }
                         """))
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andReturn();
-
-
         assertEquals(mvcResult.getResponse().getStatus(), 201);
     }
 }

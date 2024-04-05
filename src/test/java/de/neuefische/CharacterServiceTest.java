@@ -1,10 +1,10 @@
-package de.neuefische.cgnjava234webclient;
+package de.neuefische;
 
-import de.neuefische.cgnjava234webclient.characters.models.Character;
-import de.neuefische.cgnjava234webclient.characters.models.api.RickAndMortyOrigin;
-import de.neuefische.cgnjava234webclient.characters.repositorys.CharacterRepository;
-import de.neuefische.cgnjava234webclient.characters.services.CharacterService;
-import de.neuefische.cgnjava234webclient.characters.api.RickAndMortyAPIService;
+import de.neuefische.characters.models.Character;
+import de.neuefische.characters.models.api.RickAndMortyOrigin;
+import de.neuefische.characters.repositorys.CharacterRepository;
+import de.neuefische.characters.services.CharacterService;
+import de.neuefische.characters.api.RickAndMortyAPIService;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
