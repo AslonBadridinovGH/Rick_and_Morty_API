@@ -1,7 +1,7 @@
 package de.neuefische.characters.services;
 
-import de.neuefische.characters.repositorys.CharacterRepository;
 import de.neuefische.characters.models.Character;
+import de.neuefische.characters.repositorys.CharacterRepository;
 import de.neuefische.characters.api.RickAndMortyAPIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,7 @@ public class CharacterService {
     private final RickAndMortyAPIService rickAndMortyAPIService;
 
     public List<Character> getAllCharacters() {
+
         List<Character> rickMortyCharacters = rickAndMortyAPIService.loadAllCharacters();
         List<Character> localCharacters = characterRepository.findAll();
 
@@ -27,11 +28,13 @@ public class CharacterService {
     }
 
     public Character addCharacter(Character character) {
-
         return characterRepository.save(character);
     }
 
     public Character getCharacterById(String id) {
-        return rickAndMortyAPIService.loadCharacterById(id);
+        Character character = rickAndMortyAPIService.loadCharacterById(id);
+        characterRepository.save(character);
+        return character;
     }
+
 }

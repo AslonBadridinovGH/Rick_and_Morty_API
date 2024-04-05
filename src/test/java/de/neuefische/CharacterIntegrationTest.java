@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
@@ -56,11 +57,9 @@ class CharacterIntegrationTest {
     }
 
     @Test
-    @DirtiesContext
     public void getAllCharacters() throws Exception {
         //GIVEN
         characterRepository.save(new Character("123", "Test", "alive", new RickAndMortyOrigin("Earth", "url"), List.of("episode1")));
-
 
         mockWebServer.enqueue(new MockResponse()
                 .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
@@ -73,7 +72,7 @@ class CharacterIntegrationTest {
                         "results": [
                                  {
                                     "id": 1,
-                                    "name": "TEst",
+                                    "name": "Test",
                                     "status": "Alive",
                                     "species": "Human",
                                     "type": "",
@@ -90,7 +89,7 @@ class CharacterIntegrationTest {
                                     "episode": [
                                         "https://rickandmortyapi.com/api/episode/1",
                                         "https://rickandmortyapi.com/api/episode/2",
-                                        "https://rickandmortyapi.com/api/episode/3"   
+                                        "https://rickandmortyapi.com/api/episode/3"     
                                     ],
                                     "url": "https://rickandmortyapi.com/api/character/1",
                                     "created": "2017-11-04T18:48:46.250Z"
@@ -98,8 +97,9 @@ class CharacterIntegrationTest {
                             ]
                         }
                         """));
+
         //WHEN
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/characters"))
+        MvcResult mvcResult = mockMvc.perform(get("/api/characters"))
 
                 //THEN
                 .andExpect(status().isOk())
@@ -108,32 +108,47 @@ class CharacterIntegrationTest {
                         "id": "123",
                         "name": "Test"
                         },
-                        {"id":"1","name":"TEst","status":"Alive","origin":{"name":"Earth (C-137)","url":"https://rickandmortyapi.com/api/location/1"},"episode":["https://rickandmortyapi.com/api/episode/1","https://rickandmortyapi.com/api/episode/2","https://rickandmortyapi.com/api/episode/3"]}]
+                        {"id":"1","name":"Test","status":"Alive","origin":{"name":"Earth (C-137)","url":"https://rickandmortyapi.com/api/location/1"},"episode":["https://rickandmortyapi.com/api/episode/1","https://rickandmortyapi.com/api/episode/2","https://rickandmortyapi.com/api/episode/3"]}]
                         """))
                 .andReturn();
+
         assertEquals(mvcResult.getResponse().getStatus(), 200);
     }
+
     @Test
     @DirtiesContext
     public void postCharacter() throws Exception {
         //GIVEN
+
         //WHEN
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/api/characters")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                   "name": "Aslon"
+                                   "name": "myName"
                                 }
                                 """))
+
                 //THEN
                 .andExpect(status().isCreated())
                 .andExpect(content().json("""
                         {
-                            "name": "Aslon"
+                            "name": "myName"
                         }
                         """))
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andReturn();
+
+
         assertEquals(mvcResult.getResponse().getStatus(), 201);
+    }
+
+    @Test
+    public void getCharacterById() throws Exception {
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(404));
+
+        mockMvc.perform(get("/api/characters/0"))
+                .andExpect(status().isNotFound());
     }
 }

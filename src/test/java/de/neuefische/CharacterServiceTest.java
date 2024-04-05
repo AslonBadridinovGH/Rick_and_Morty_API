@@ -18,6 +18,7 @@ class CharacterServiceTest {
 
     private CharacterRepository characterRepository = mock(CharacterRepository.class);
     private RickAndMortyAPIService rickAndMortyAPIService = mock(RickAndMortyAPIService.class);
+
     private CharacterService characterService = new CharacterService(characterRepository, rickAndMortyAPIService);
 
     @Test

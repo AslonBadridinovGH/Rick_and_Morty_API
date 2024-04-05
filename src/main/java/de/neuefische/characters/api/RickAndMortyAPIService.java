@@ -26,7 +26,6 @@ public class RickAndMortyAPIService {
                 .uri("/character")
                 .retrieve()
                 .body(RickAndMortyResponse.class);
-
         return responseBody.results();
     }
 
@@ -40,6 +39,8 @@ public class RickAndMortyAPIService {
         catch (HttpClientErrorException exception) {
             throw new CharacterNotFoundException(exception.getMessage());
         }
-
     }
+
+
+
 }
